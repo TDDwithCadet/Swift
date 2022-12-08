@@ -1,11 +1,11 @@
 final class Dollar {
-    public var amount: Int
+    public let amount: Int
 
     public init(amount: Int) {
         self.amount = amount
     }
 
-    func times(multiplier: Int) {
-        self.amount *= multiplier
+    func times(multiplier: Int) -> Dollar {
+        return Dollar(amount: amount * multiplier)
     }
 }

@@ -1,4 +1,4 @@
-final class Dollar {
+struct Dollar: Hashable {
     public let amount: Int
 
     public init(amount: Int) {
@@ -9,7 +9,7 @@ final class Dollar {
         return Dollar(amount: amount * multiplier)
     }
 
-    func equals(obj: AnyObject) -> Bool {
+    func equals(obj: Any) -> Bool {
         guard let dollar = obj as? Dollar else {
             return false
         }

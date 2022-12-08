@@ -8,4 +8,11 @@ final class Dollar {
     func times(multiplier: Int) -> Dollar {
         return Dollar(amount: amount * multiplier)
     }
+
+    func equals(obj: AnyObject) -> Bool {
+        guard let dollar = obj as? Dollar else {
+            return false
+        }
+        return self.amount == dollar.amount
+    }
 }

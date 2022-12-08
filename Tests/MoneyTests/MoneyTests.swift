@@ -9,4 +9,9 @@ final class MoneyTests: XCTestCase {
         product = five.times(multiplier: 3)
         XCTAssertEqual(15, product.amount)
     }
+
+    func testEquality() throws {
+        XCTAssertTrue(Dollar(amount: 5).equals(obj: Dollar(amount: 5)))
+        XCTAssertFalse(Dollar(amount: 5).equals(obj: Dollar(amount: 6)))
+    }
 }

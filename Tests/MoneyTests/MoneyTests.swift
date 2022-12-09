@@ -9,8 +9,9 @@ final class MoneyTests: XCTestCase {
     }
 
     func testEquality() throws {
-        XCTAssertTrue(Franc(amount: 5).equals(obj: Franc(amount: 5)))
-        XCTAssertFalse(Franc(amount: 5).equals(obj: Franc(amount: 6)))
+        XCTAssertTrue(Franc(amount: 5) == Franc(amount: 5))
+        XCTAssertFalse(Franc(amount: 5) == Franc(amount: 6))
+        XCTAssertFalse(Money(amount: 5) == Franc(amount: 5))
     }
 
     func testFrancMultiplication() throws {

@@ -22,16 +22,28 @@ extension Money: Equatable {
     public static func franc(_ amount: Int) -> Franc {
         return Franc(amount)
     }
+
+    public class func currency() -> String {
+        return "Money"
+    }
 }
 
 class Dollar: Money {
     override func times(_ multiplier: Int) -> Money {
         return Dollar(self.amount * multiplier)
     }
+
+    func currency() -> String {
+        return "USD"
+    }
 }
 
 class Franc: Money {
     override func times(_ multiplier: Int) -> Money {
         return Franc(self.amount * multiplier)
+    }
+
+    func currency() -> String {
+        return "CHF"
     }
 }

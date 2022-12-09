@@ -5,7 +5,7 @@ class Dollar {
         self.amount = amount
     }
 
-    func times(_ multiplier: Int) {
-        self.amount *= multiplier
+    func times(_ multiplier: Int) -> Dollar {
+        return Dollar(self.amount * multiplier)
     }
 }

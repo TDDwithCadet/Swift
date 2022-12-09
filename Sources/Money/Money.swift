@@ -10,6 +10,14 @@ extension Money: Equatable {
     public static func ==(lhs: Money, rhs: Money) -> Bool {
         return lhs.amount == rhs.amount && type(of: lhs) == type(of: rhs)
     }
+
+    public static func dollar(_ amount: Int) -> Dollar {
+        return Dollar(amount)
+    }
+
+    public static func franc(_ amount: Int) -> Franc {
+        return Franc(amount)
+    }
 }
 
 class Dollar: Money {

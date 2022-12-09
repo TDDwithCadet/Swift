@@ -4,6 +4,10 @@ class Money {
     init(_ amount: Int) {
         self.amount = amount
     }
+
+    func times(_ multiplier: Int) -> Money {
+        return Money(self.amount * multiplier)
+    }
 }
 
 extension Money: Equatable {
@@ -21,13 +25,13 @@ extension Money: Equatable {
 }
 
 class Dollar: Money {
-    func times(_ multiplier: Int) -> Money {
+    override func times(_ multiplier: Int) -> Money {
         return Dollar(self.amount * multiplier)
     }
 }
 
 class Franc: Money {
-    func times(_ multiplier: Int) -> Money {
+    override func times(_ multiplier: Int) -> Money {
         return Franc(self.amount * multiplier)
     }
 }

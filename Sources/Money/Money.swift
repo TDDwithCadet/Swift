@@ -13,13 +13,13 @@ extension Money: Equatable {
 }
 
 class Dollar: Money {
-    func times(_ multiplier: Int) -> Dollar {
+    func times(_ multiplier: Int) -> Money {
         return Dollar(self.amount * multiplier)
     }
 }
 
 class Franc: Money {
-    func times(_ multiplier: Int) -> Franc {
+    func times(_ multiplier: Int) -> Money {
         return Franc(self.amount * multiplier)
     }
 }

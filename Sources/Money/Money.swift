@@ -8,13 +8,13 @@ class Money {
     }
 
     func times(_ multiplier: Int) -> Money {
-        return Money(self.amount * multiplier, "")
+        return Money(self.amount * multiplier, currency)
     }
 }
 
 extension Money: Equatable {
     public static func ==(lhs: Money, rhs: Money) -> Bool {
-        return lhs.amount == rhs.amount && type(of: lhs) == type(of: rhs)
+        return lhs.amount == rhs.amount && lhs.currency == rhs.currency
     }
 
     public static func dollar(_ amount: Int) -> Dollar {
@@ -26,14 +26,6 @@ extension Money: Equatable {
     }
 }
 
-class Dollar: Money {
-    override func times(_ multiplier: Int) -> Money {
-        return Money.dollar(self.amount * multiplier)
-    }
-}
+class Dollar: Money {}
 
-class Franc: Money {
-    override func times(_ multiplier: Int) -> Money {
-        return Money.franc(self.amount * multiplier)
-    }
-}
+class Franc: Money {}

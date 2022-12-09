@@ -9,3 +9,9 @@ class Dollar {
         return Dollar(self.amount * multiplier)
     }
 }
+
+extension Dollar: Equatable {
+    public static func ==(lhs: Dollar, rhs: Dollar) -> Bool {
+        return lhs.amount == rhs.amount
+    }
+}

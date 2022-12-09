@@ -17,3 +17,4 @@
 - [x] 공용 equals
 - [ ] 공용 times
 - [x] Franc과 Dollar 비교하기
+- [ ] 통화?

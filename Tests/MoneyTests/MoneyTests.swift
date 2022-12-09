@@ -3,7 +3,7 @@ import XCTest
 
 final class MoneyTests: XCTestCase {
     func testMultiplication() throws {
-        let five = Dollar(5)
+        let five = Money.dollar(5)
         XCTAssertEqual(Dollar(10), five.times(2))
         XCTAssertEqual(Dollar(15), five.times(3))
     }
@@ -17,7 +17,7 @@ final class MoneyTests: XCTestCase {
     }
 
     func testFrancMultiplication() {
-        let five = Franc(5)
+        let five = Money.franc(5)
         XCTAssertEqual(Franc(10), five.times(2))
         XCTAssertEqual(Franc(15), five.times(3))
     }

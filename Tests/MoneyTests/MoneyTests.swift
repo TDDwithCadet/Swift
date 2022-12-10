@@ -22,4 +22,9 @@ final class MoneyTests: XCTestCase {
     func testDifferentClassEquality() {
         XCTAssertTrue(Money(10, "CHF") == Money.franc(10))
     }
+
+    func testSimpleAddition() {
+        let sum: Money = Money.dollar(5) + Money.dollar(5)
+        XCTAssertEqual(Money.dollar(10), sum)
+    }
 }

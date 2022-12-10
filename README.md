@@ -19,3 +19,4 @@
 - [x] Franc과 Dollar 비교하기
 - [x] 통화?
 - [x] testFrancMultiplication을 지워야 할까?
+- [ ] **$5 + $5 = $10**

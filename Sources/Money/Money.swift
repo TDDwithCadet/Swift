@@ -17,11 +17,11 @@ extension Money: Equatable {
         return lhs.amount == rhs.amount && lhs.currency == rhs.currency
     }
 
-    public static func dollar(_ amount: Int) -> Dollar {
+    public static func dollar(_ amount: Int) -> Money {
         return Dollar(amount, "USD")
     }
 
-    public static func franc(_ amount: Int) -> Franc {
+    public static func franc(_ amount: Int) -> Money {
         return Franc(amount, "CHF")
     }
 }

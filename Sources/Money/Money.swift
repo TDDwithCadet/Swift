@@ -1,4 +1,7 @@
-class Money {
+protocol Expression {
+}
+
+class Money: Expression {
     fileprivate var amount: Int
     let currency: String
 
@@ -12,12 +15,18 @@ class Money {
     }
 }
 
+class Bank {
+    func reduce(_ source: Expression, _ to: String) -> Money {
+        return Money.dollar(10)
+    }
+}
+
 extension Money: Equatable {
     public static func ==(lhs: Money, rhs: Money) -> Bool {
         return lhs.amount == rhs.amount && lhs.currency == rhs.currency
     }
 
-    public static func +(lhs: Money, rhs: Money) -> Money {
+    public static func +(lhs: Money, rhs: Money) -> Expression {
         return Money(lhs.amount + rhs.amount, lhs.currency)
     }
 

@@ -17,6 +17,10 @@ extension Money: Equatable {
         return lhs.amount == rhs.amount && lhs.currency == rhs.currency
     }
 
+    public static func +(lhs: Money, rhs: Money) -> Money {
+        return Money(lhs.amount + rhs.amount, lhs.currency)
+    }
+
     public static func dollar(_ amount: Int) -> Money {
         return Dollar(amount, "USD")
     }

@@ -18,4 +18,4 @@
 - [x] 공용 times
 - [x] Franc과 Dollar 비교하기
 - [x] 통화?
-- [ ] testFrancMultiplication을 지워야 할까?
+- [x] testFrancMultiplication을 지워야 할까?

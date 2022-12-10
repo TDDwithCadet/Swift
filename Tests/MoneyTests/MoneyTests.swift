@@ -28,6 +28,6 @@ final class MoneyTests: XCTestCase {
     }
 
     func testDifferentClassEquality() {
-        XCTAssertTrue(Money(10, "CHF") == Franc(10, "CHF"))
+        XCTAssertTrue(Money(10, "CHF") == Money.franc(10))
     }
 }

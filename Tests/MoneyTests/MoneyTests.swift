@@ -67,8 +67,8 @@ final class MoneyTests: XCTestCase {
     }
 
     func testMixedAddition() {
-        let fivebucks: Expression = Money.dollar(5)
-        let tenFrancs: Expression = Money.franc(10)
+        let fivebucks: Money = Money.dollar(5)
+        let tenFrancs: Money = Money.franc(10)
         let bank: Bank = Bank()
         bank.addRate(from: "CHF", to: "USD", rate: 2)
         let result: Money = bank.reduce(source: fivebucks + tenFrancs, to: "USD")

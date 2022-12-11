@@ -50,7 +50,7 @@ class Sum: Expression {
     }
 
     func reduce(bank: Bank, to: String) -> Money {
-        let amount: Int = self.augend.amount + self.addend.amount
+        let amount: Int = self.augend.reduce(bank: bank, to: to).amount + self.addend.reduce(bank: bank, to: to).amount
         return Money(amount, to)
     }
 }

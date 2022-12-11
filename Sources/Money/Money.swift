@@ -1,6 +1,7 @@
 protocol Expression {
     func reduce(bank: Bank, to: String) -> Money
     func plus(addend: Expression) -> Expression
+    func times(_ multiplier: Int) -> Expression
 }
 
 class Money: Expression {
@@ -12,17 +13,17 @@ class Money: Expression {
         self.currency = currency
     }
 
-    func times(_ multiplier: Int) -> Money {
-        return Money(self.amount * multiplier, currency)
-    }
-
     func reduce(bank: Bank, to: String) -> Money {
         let rate = bank.rate(from: self.currency, to: to)
         return Money(self.amount / rate, to)
     }
 
     func plus(addend: Expression) -> Expression {
-        return Sum(augend: self, addend: addend as! Money)
+        return Sum(augend: self, addend: addend)
+    }
+
+    func times(_ multiplier: Int) -> Expression {
+        return Money(self.amount * multiplier, currency)
     }
 }
 
@@ -61,6 +62,10 @@ class Sum: Expression {
 
     func plus(addend: Expression) -> Expression {
         return Sum(augend: self, addend: addend)
+    }
+
+    func times(_ multiplier: Int) -> Expression {
+        return Sum(augend: self.augend.times(multiplier), addend: self.addend.times(multiplier))
     }
 }
 

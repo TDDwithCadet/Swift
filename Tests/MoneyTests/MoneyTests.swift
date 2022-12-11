@@ -4,8 +4,8 @@ import XCTest
 final class MoneyTests: XCTestCase {
     func testMultiplication() throws {
         let five: Money = Money.dollar(5)
-        XCTAssertEqual(Money.dollar(10), five.times(2))
-        XCTAssertEqual(Money.dollar(15), five.times(3))
+        XCTAssertEqual(Money.dollar(10), five.times(2) as! Money)
+        XCTAssertEqual(Money.dollar(15), five.times(3) as! Money)
     }
 
     func testEquality() throws {

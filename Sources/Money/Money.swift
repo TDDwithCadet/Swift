@@ -27,25 +27,6 @@ class Money: Expression {
     }
 }
 
-class Bank {
-    var rates: [Pair: Int] = [:]
-
-    func reduce(source: Expression, to: String) -> Money {
-        return source.reduce(bank: self, to: to)
-    }
-
-    func rate(from: String, to: String) -> Int {
-        if from == to {
-            return 1
-        }
-        return rates[Pair(from: from, to: to)] ?? 1
-    }
-
-    func addRate(from: String, to: String, rate: Int) {
-        rates[Pair(from: from, to: to)] = rate
-    }
-}
-
 class Sum: Expression {
     let augend: Expression
     let addend: Expression

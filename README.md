@@ -21,4 +21,4 @@
 - [x] testFrancMultiplication을 지워야 할까?
 - [ ] **$5 + $5 = $10**
 - [ ] $5 + $5에서 Money 반환하기
-- [ ] Bank.reduce(Money)
+- [x] Bank.reduce(Money)

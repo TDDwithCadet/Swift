@@ -1,4 +1,5 @@
 protocol Expression {
+    func reduce(_ to: String) -> Money
 }
 
 class Money: Expression {
@@ -13,12 +14,15 @@ class Money: Expression {
     func times(_ multiplier: Int) -> Money {
         return Money(self.amount * multiplier, currency)
     }
+
+    func reduce(_ to: String) -> Money {
+        return self
+    }
 }
 
 class Bank {
     func reduce(_ source: Expression, _ to: String) -> Money {
-        let sum = source as! Sum
-        return sum.reduce(to)
+        return source.reduce(to)
     }
 }
 

@@ -1,5 +1,6 @@
 protocol Expression {
     func reduce(bank: Bank, to: String) -> Money
+    func plus(addend: Expression) -> Expression
 }
 
 class Money: Expression {
@@ -18,6 +19,10 @@ class Money: Expression {
     func reduce(bank: Bank, to: String) -> Money {
         let rate = bank.rate(from: self.currency, to: to)
         return Money(self.amount / rate, to)
+    }
+
+    func plus(addend: Expression) -> Expression {
+        return Sum(augend: self, addend: addend as! Money)
     }
 }
 
@@ -41,10 +46,10 @@ class Bank {
 }
 
 class Sum: Expression {
-    let augend: Money
-    let addend: Money
+    let augend: Expression
+    let addend: Expression
 
-    init(augend: Money, addend: Money) {
+    init(augend: Expression, addend: Expression) {
         self.augend = augend
         self.addend = addend
     }
@@ -53,15 +58,15 @@ class Sum: Expression {
         let amount: Int = self.augend.reduce(bank: bank, to: to).amount + self.addend.reduce(bank: bank, to: to).amount
         return Money(amount, to)
     }
+
+    func plus(addend: Expression) -> Expression {
+        return Sum(augend: self, addend: addend)
+    }
 }
 
 extension Money: Equatable {
     public static func ==(lhs: Money, rhs: Money) -> Bool {
         return lhs.amount == rhs.amount && lhs.currency == rhs.currency
-    }
-
-    public static func +(lhs: Money, rhs: Money) -> Expression {
-        return Sum(augend: lhs, addend: rhs)
     }
 
     public static func dollar(_ amount: Int) -> Money {

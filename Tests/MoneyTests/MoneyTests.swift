@@ -25,7 +25,7 @@ final class MoneyTests: XCTestCase {
 
     func testSimpleAddition() {
         let five: Money = Money.dollar(5)
-        let sum: Expression = five + five
+        let sum: Expression = five.plus(addend: five)
         let bank: Bank = Bank()
         let reduced: Money = bank.reduce(source: sum, to: "USD")
         XCTAssertEqual(Money.dollar(10), reduced)
@@ -33,13 +33,13 @@ final class MoneyTests: XCTestCase {
 
     func testPlusReturnsSum() throws {
         let five: Money = Money.dollar(5)
-        let result: Expression = five + five
+        let result: Expression = five.plus(addend: five)
         guard let sum: Sum = result as? Sum else {
             XCTAssertThrowsError("ERROR")
             return
         }
-        XCTAssertEqual(five, sum.augend)
-        XCTAssertEqual(five, sum.addend)
+        XCTAssertEqual(five, sum.augend as! Money)
+        XCTAssertEqual(five, sum.addend as! Money)
     }
 
     func testReduceSum() {
@@ -71,7 +71,7 @@ final class MoneyTests: XCTestCase {
         let tenFrancs: Money = Money.franc(10)
         let bank: Bank = Bank()
         bank.addRate(from: "CHF", to: "USD", rate: 2)
-        let result: Money = bank.reduce(source: fivebucks + tenFrancs, to: "USD")
+        let result: Money = bank.reduce(source: fivebucks.plus(addend: tenFrancs), to: "USD")
         XCTAssertEqual(Money.dollar(10), result)
     }
 }

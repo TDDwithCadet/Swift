@@ -48,4 +48,10 @@ final class MoneyTests: XCTestCase {
         let result: Money = bank.reduce(sum, "USD")
         XCTAssertEqual(Money.dollar(7), result)
     }
+
+    func testReduceMoney() {
+        let bank: Bank = Bank()
+        let result: Money = bank.reduce(Money.dollar(1), "USD")
+        XCTAssertEqual(Money.dollar(1), result)
+    }
 }

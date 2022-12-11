@@ -19,8 +19,8 @@
 - [x] Franc과 Dollar 비교하기
 - [x] 통화?
 - [x] testFrancMultiplication을 지워야 할까?
-- [ ] **$5 + $5 = $10**
+- [x] $5 + $5 = $10
 - [ ] $5 + $5에서 Money 반환하기
 - [x] Bank.reduce(Money)
-- [ ] Money에 대한 통화 변환을 수행하는 Reduce
-- [ ] Reduce(Bank, String)
+- [x] Money에 대한 통화 변환을 수행하는 Reduce
+- [x] Reduce(Bank, String)

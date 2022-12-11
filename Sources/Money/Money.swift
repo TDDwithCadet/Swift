@@ -29,7 +29,10 @@ class Bank {
     }
 
     func rate(from: String, to: String) -> Int {
-        return from == "CHF" && to == "USD" ? 2 : 1
+        if from == to {
+            return 1
+        }
+        return rates[Pair(from: from, to: to)] ?? 1
     }
 
     func addRate(from: String, to: String, rate: Int) {

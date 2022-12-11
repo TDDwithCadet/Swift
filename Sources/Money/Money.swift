@@ -16,7 +16,10 @@ class Money: Expression {
     }
 
     func reduce(_ to: String) -> Money {
-        return self
+        let rate: Int = self.currency == "CHF" && to == "USD"
+            ? 2
+            : 1
+        return Money(self.amount / rate, to)
     }
 }
 

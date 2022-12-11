@@ -30,4 +30,15 @@ final class MoneyTests: XCTestCase {
         let reduced: Money = bank.reduce(sum, "USD")
         XCTAssertEqual(Money.dollar(10), reduced)
     }
+
+    func testPlusReturnsSum() throws {
+        let five: Money = Money.dollar(5)
+        let result: Expression = five + five
+        guard let sum: Sum = result as? Sum else {
+            XCTAssertThrowsError("ERROR")
+            return
+        }
+        XCTAssertEqual(five, sum.augend)
+        XCTAssertEqual(five, sum.addend)
+    }
 }

@@ -21,13 +21,23 @@ class Bank {
     }
 }
 
+class Sum: Expression {
+    let augend: Money
+    let addend: Money
+
+    init(augend: Money, addend: Money) {
+        self.augend = augend
+        self.addend = addend
+    }
+}
+
 extension Money: Equatable {
     public static func ==(lhs: Money, rhs: Money) -> Bool {
         return lhs.amount == rhs.amount && lhs.currency == rhs.currency
     }
 
     public static func +(lhs: Money, rhs: Money) -> Expression {
-        return Money(lhs.amount + rhs.amount, lhs.currency)
+        return Sum(augend: lhs, addend: rhs)
     }
 
     public static func dollar(_ amount: Int) -> Money {

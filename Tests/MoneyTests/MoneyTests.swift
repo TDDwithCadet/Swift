@@ -27,7 +27,7 @@ final class MoneyTests: XCTestCase {
         let five: Money = Money.dollar(5)
         let sum: Expression = five + five
         let bank: Bank = Bank()
-        let reduced: Money = bank.reduce(sum, "USD")
+        let reduced: Money = bank.reduce(source: sum, to: "USD")
         XCTAssertEqual(Money.dollar(10), reduced)
     }
 

@@ -1,5 +1,5 @@
 protocol Expression {
-    func reduce(_ to: String) -> Money
+    func reduce(bank: Bank, to: String) -> Money
 }
 
 class Money: Expression {
@@ -15,7 +15,7 @@ class Money: Expression {
         return Money(self.amount * multiplier, currency)
     }
 
-    func reduce(_ to: String) -> Money {
+    func reduce(bank: Bank, to: String) -> Money {
         let rate: Int = self.currency == "CHF" && to == "USD"
             ? 2
             : 1
@@ -24,8 +24,8 @@ class Money: Expression {
 }
 
 class Bank {
-    func reduce(_ source: Expression, _ to: String) -> Money {
-        return source.reduce(to)
+    func reduce(source: Expression, to: String) -> Money {
+        return source.reduce(bank: self, to: to)
     }
 }
 
@@ -38,7 +38,7 @@ class Sum: Expression {
         self.addend = addend
     }
 
-    func reduce(_ to: String) -> Money {
+    func reduce(bank: Bank, to: String) -> Money {
         let amount: Int = self.augend.amount + self.addend.amount
         return Money(amount, to)
     }
